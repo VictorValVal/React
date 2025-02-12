@@ -8,7 +8,7 @@ function PokemonList() {
   const [error, setError] = useState('');
   const [selectedPokemon, setSelectedPokemon] = useState(null);
 
-  // Crear un objeto ref para cada caja de Pokémon
+
   const pokemonRefs = useRef([]);
 
   const typeColors = {
@@ -66,7 +66,7 @@ function PokemonList() {
       });
   }, []);
 
-  // Agregar la función para desplazarse a la caja correspondiente
+
   const scrollToPokemon = (pokemonName) => {
     const pokemonIndex = pokemons.findIndex(pokemon => pokemon.name.toLowerCase() === pokemonName.toLowerCase());
     if (pokemonIndex !== -1) {
@@ -85,7 +85,7 @@ function PokemonList() {
   const openModal = (pokemon) => setSelectedPokemon(pokemon);
   const closeModal = () => setSelectedPokemon(null);
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <p className='cargando'>Cargando...</p>;
   if (error) return <p>{error}</p>;
 
   return (
@@ -103,7 +103,7 @@ function PokemonList() {
               justifyContent: 'center', 
               padding: '10px' 
             }}
-            ref={el => pokemonRefs.current[index] = el}  // Asignar ref a cada caja
+            ref={el => pokemonRefs.current[index] = el} 
           >
             <div className="pokemon-box">
               <p className="num">#{(index + 1).toString().padStart(4, '0')}</p>
